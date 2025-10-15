@@ -1,0 +1,53 @@
+{
+  "name": "My_Project_2",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@cap-js/hana": "^2",
+    "@sap-cloud-sdk/http-client": "^4.1.2",
+    "@sap-cloud-sdk/util": "^4.1.2",
+    "@sap/cds": "^9",
+    "@sap/low-code-event-handler": "^1.2.5",
+    "@sap/xsenv": ">=3.3.2 <3.3.3",
+    "@sap/xssec": "^4.10.0",
+    "express": "^4",
+    "hdb": "^2.26.1",
+    "passport": "^0.7.0"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/dev-cap-tools": "^1.31.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "start-local": "npm run generate-entry-point && npm run cds-watch",
+    "generate-entry-point": "dev-cap-tools gen-entrypoint",
+    "cds-watch": "cds watch --open",
+    "watch-my_project_2.purchases": "cds watch --open my_project_2.purchases/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-my_project_2.customers": "cds watch --open my_project_2.customers/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-my_project_2.redemption": "cds watch --open my_project_2.redemption/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "[production]": {
+        "db": "hana",
+        "auth": "xsuaa"
+      },
+      "auth": {
+        "[development]": {
+          "kind": "dummy"
+        },
+        "[production]": {
+          "kind": "xsuaa"
+        }
+      }
+    }
+  },
+  "lcap": true,
+  "sapux": [
+    "app/my_project_2.purchases",
+    "app/my_project_2.customers",
+    "app/my_project_2.redemption"
+  ]
+}
